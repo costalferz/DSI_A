@@ -1,0 +1,13 @@
+
+#docker-compose.yml
+version: '3'
+services:
+  redis:
+    image: 'redis:6.2.10-alpine'
+    ports:
+      - '6379:6379'
+  web1:
+    restart: on-failure
+    build: ./web
+    ports:
+      - '81:5000'

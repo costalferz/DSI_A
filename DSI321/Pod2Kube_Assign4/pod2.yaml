@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: pod-6309659115
+  name: pod-6309659115-2
+spec:
+  containers:
+    - name: iris-web
+      image: kran13200/iris_web:latest
+      ports:
+        - name: http
+          containerPort: 5000
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: pod-6309659115
+  name: pod-6309659115-1
+
+spec:
+  containers:
+    - name: iris-web
+      image: kran13200/iris_web:latest
+      ports:
+        - name: http
+          containerPort: 5000
+          protocol: TCP
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-6309659115
+spec:
+  selector:
+    app: pod-6309659115
+  ports:
+  - port: 5001
+    targetPort: 5000
